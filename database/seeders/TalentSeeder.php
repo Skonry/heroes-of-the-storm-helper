@@ -54,7 +54,7 @@ class TalentSeeder extends Seeder
     }
     private function loadJsonData($fileName)
     {
-        $json = Storage::disk('local')->get('heroes_data/' . $fileName . '.json');
+        $json = Storage::disk('public')->get('heroes_data/' . $fileName . '.json');
         $data = json_decode($json);
         return $data;
     }
