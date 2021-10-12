@@ -10,17 +10,17 @@
 </template>
 
 <script>
-  import { Head, Link } from '@inertiajs/inertia-vue3';
-  import BuildCalculator from '../../Components/BuildCalculator/BuildCalculator.vue';
-  import AppLayout from '../../Layouts/AppLayout.vue';
+import { Head, Link } from '@inertiajs/inertia-vue3';
+import BuildCalculator from '../../Components/BuildCalculator/BuildCalculator.vue';
+import AppLayout from '../../Layouts/AppLayout.vue';
 
-  export default {
-    components: {
-      Head,
-      Link,
-      BuildCalculator,
-        AppLayout
-    },
-    props: ['hero', 'talents']
-  }
+export default {
+  components: {
+    Head,
+    Link,
+    BuildCalculator,
+    AppLayout
+  },
+  props: ['hero', 'talents']
+}
 </script>

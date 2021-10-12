@@ -1,12 +1,12 @@
 <template>
-  <div class="max-w-2xl mx-auto">
-    <div class="flex my-4">
-      <div>Level</div>
-      <div class="flex-1 text-center">Talents</div>
+  <div>
+    <div class="flex justify-between">
+      <p>Level</p>
+      <p>Talents</p>
     </div>
-    <div v-for="level in levels" class="flex">
+    <div v-for="level in levels" class="flex justify-between">
       <span class="self-center">{{ level }}</span>
-      <TalentsRow :talents="talentsInRow(level)" class="flex-1"/>
+      <TalentsRow :talents="talentsInRow(level)" class=""/>
     </div>
   </div>
 </template>

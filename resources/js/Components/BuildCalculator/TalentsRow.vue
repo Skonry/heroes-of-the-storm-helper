@@ -1,8 +1,7 @@
 <template>
-  <div class="flex flex-col items-center">
-    <div class="flex items-center">
-      <Talent v-for="talent in sortedTalents" :key="talent.id" :talent="talent" />
-    </div>
+  <div class="flex">
+    
+    <Talent v-for="talent in sortedTalents" :key="talent.id" :talent="talent" />
   </div>
 </template>
 

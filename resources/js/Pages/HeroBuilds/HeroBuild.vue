@@ -5,24 +5,21 @@
         Show build: {{ build.name }}
       </h1>
     </template>
-    <div v-if="userIsOwner" class="flex flex-col items-center">
-      <Link :href="route('heroes.builds.edit', [hero.id, build.id])" class="underline text-blue-500">Edit build</Link>
-      <button @click="handleDeleteBuild">Delete build</button>
+    <build-calculator 
+      :build="build" 
+      :hero="hero" 
+      mode="show" 
+      :talents="talents"
+      :userIsOwner="userIsOwner"
+    ></build-calculator>
+    <div v-if="!userIsOwner" class="text-center mt-8">
+      <upvote
+        :build="build"
+        :is-upvoted="isUpvoted"
+        :is-authenticated="isAuthenticated"
+        :number-of-upvotes="numberOfUpvotes"
+      ></upvote>
     </div>
-      <build-calculator 
-        :build="build" 
-        :hero="hero" 
-        mode="show" 
-        :talents="talents"
-      ></build-calculator>
-      <div v-if="!userIsOwner" class="text-center mt-8">
-        <upvote
-          :build="build"
-          :is-upvoted="isUpvoted"
-          :is-authenticated="isAuthenticated"
-          :number-of-upvotes="numberOfUpvotes"
-        ></upvote>
-      </div>
   </app-layout>
 </template>
 
@@ -38,7 +35,7 @@
       Link,
       BuildCalculator,
       Upvote,
-        AppLayout
+      AppLayout
     },
     props: [
       'build',
