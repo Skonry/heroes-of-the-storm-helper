@@ -103,6 +103,9 @@ export default {
         talentsIds: this.getSelectedTalentsIds()
       });
     },
+    handleDeleteBuild() {
+      this.$inertia.delete(`/heroes/${this.hero.id}/builds/${this.build.id}`);
+    },
     handleClickTalent(id, level) {
       this.talentsData = this.talentsData.map(talent => {
         if (talent.isSelected && talent.level === level) {

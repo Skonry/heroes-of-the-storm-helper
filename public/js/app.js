@@ -19088,6 +19088,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         talentsIds: this.getSelectedTalentsIds()
       });
     },
+    handleDeleteBuild: function handleDeleteBuild() {
+      this.$inertia["delete"]("/heroes/".concat(this.hero.id, "/builds/").concat(this.build.id));
+    },
     handleClickTalent: function handleClickTalent(id, level) {
       this.talentsData = this.talentsData.map(function (talent) {
         if (talent.isSelected && talent.level === level) {
@@ -21686,7 +21689,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   , ["href"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $props.userIsOwner ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
     key: 1,
     onClick: _cache[0] || (_cache[0] = function () {
-      return _ctx.handleDeleteBuild && _ctx.handleDeleteBuild.apply(_ctx, arguments);
+      return $options.handleDeleteBuild && $options.handleDeleteBuild.apply($options, arguments);
     }),
     "class": "inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition"
   }, " Delete build ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])], 64
