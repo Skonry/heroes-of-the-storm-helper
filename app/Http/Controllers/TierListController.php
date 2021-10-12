@@ -92,6 +92,12 @@ class TierListController extends Controller
   
   public function update(Request $request, $tierListId)
   {
+    if (Auth::id() !== $tierListId) {
+      return response()->json([
+        'result' => 'Only author can edit own tierList.'
+      ], 403);
+    }
+
     $tierList = TierList::find($tierListId);
     $tierList->update(['name' => $request->name]);
     $tierList->tiers()->each(function ($tier) {
@@ -111,6 +117,12 @@ class TierListController extends Controller
 
   public function destroy(Request $request, $tierListId)
   {
+    if (Auth::id() !== $tierListId) {
+      return response()->json([
+        'result' => 'Only author can delete own tierList.'
+      ], 403);
+    }
+
     $tierList = TierList::find($tierListId);
 
     $tierList->tiers()->each(function ($tier) {
@@ -121,16 +133,5 @@ class TierListController extends Controller
     $tierList->delete();
 
     return redirect()->route('tier_lists.index');
-  }
-
-  private function findElementWithGivenColumnValue($array, $column, $value) {
-    $key = array_search($value, array_column($array, $column));
-
-    if ($key === false) 
-    {
-      return $key;
-    }
-
-    return $array[$key];
   }
 }
