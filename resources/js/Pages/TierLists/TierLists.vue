@@ -26,7 +26,7 @@
           <tr v-for="tierList in tierLists" class="even:bg-gray-200">
             <td class="border border-black p-2">
               <p>
-                <Link :href="route('tier_lists.show', [tierList.id])" class="underline text-blue-500">>{{ tierList.name }}</Link>
+                <Link :href="route('tier_lists.show', [tierList.id])" class="underline text-blue-500">{{ tierList.name }}</Link>
               </p>
               <p>
                 by 
