@@ -16,6 +16,12 @@ class TierListUpvoteController extends Controller
 
   public function store(Request $request, $tierListId)
   {
+    if (Auth::id() === $tierListId) {
+      return response()->json([
+        'result' => 'Author cannot upvote own tier list.'
+      ], 403);
+    }
+
     TierListUpvote::create([
       'user_id' => Auth::id(),
       'tier_list_id' => $tierListId

@@ -15,7 +15,7 @@
         mode="show" 
         :talents="talents"
       ></build-calculator>
-      <div class="text-center mt-8">
+      <div v-if="!userIsOwner" class="text-center mt-8">
         <upvote
           :build="build"
           :is-upvoted="isUpvoted"
@@ -23,7 +23,6 @@
           :number-of-upvotes="numberOfUpvotes"
         ></upvote>
       </div>
-      
   </app-layout>
 </template>
 

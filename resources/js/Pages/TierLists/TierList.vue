@@ -18,6 +18,7 @@
           <img :src="hero.heroIconUrl" class="w-[100px] h-[100px]" v-for="hero in tier.heroes">
       </div>
     </div>
+
   </app-layout>
 </template>
 

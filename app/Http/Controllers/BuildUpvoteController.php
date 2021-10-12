@@ -16,6 +16,12 @@ class BuildUpvoteController extends Controller
 
   public function store(Request $request, $buildId)
   {
+    if (Auth::id() === $buildId) {
+      return response()->json([
+        'result' => 'Author cannot upvote own build.'
+      ], 403);
+    }
+
     BuildUpvote::create([
       'user_id' => Auth::id(),
       'build_id' => $buildId
