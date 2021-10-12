@@ -92,6 +92,7 @@ class HeroBuildController extends Controller
   {
     $hero = Hero::find($heroId);
     $build = Build::find($buildId);
+
     $talents = $hero->talents->map(function ($heroTalent) use ($build) {
       if ($build->talents->contains($heroTalent->id))
       {
@@ -112,6 +113,12 @@ class HeroBuildController extends Controller
 
   public function update(Request $request, $heroId, $buildId)
   {
+    if (Auth::id() !== $buildId) {
+      return response()->json([
+        'result' => 'Only author can edit own build.'
+      ], 403);
+    }
+
     $build = Build::find($buildId);
     $build->name = $request->buildName;
     $build->talents()->detach();
@@ -122,6 +129,12 @@ class HeroBuildController extends Controller
 
   public function destroy($heroId, $buildId)
   {
+    if (Auth::id() !== $buildId) {
+      return response()->json([
+        'result' => 'Only author can delete own build.'
+      ], 403);
+    }
+
     $build = Build::find($buildId);
     $build->talents()->detach();
     $build->delete();
