@@ -15,7 +15,7 @@ A live demo can be viewed here:
 
 - PHP 7.3+ and Composer
 - Database supported by Laravel (MySQL, PostgreSQL, SQLite, SQL Server)
-- Node.js and NPM
+- Node.js 16 and NPM
 - Git
 
 ### Installation
@@ -27,7 +27,7 @@ A live demo can be viewed here:
 `cd heroes-of-the-storm-helper`
 
 3. Install PHP dependencies:
-`compose install`
+`composer install`
 
 4. Install NPM dependencies:
 `npm i`
@@ -36,6 +36,7 @@ A live demo can be viewed here:
 `npm run dev`
 
 6. Setup configuration file .env
+`cp .env.example .env`
 
 7. Generate application key:
 `php artisan key:generate`
